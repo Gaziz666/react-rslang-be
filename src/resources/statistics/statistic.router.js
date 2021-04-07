@@ -1,4 +1,5 @@
 const { OK } = require('http-status-codes');
+// const moment = require('moment');
 const router = require('express').Router({ mergeParams: true });
 const statisticService = require('./statistic.service');
 const { statistics } = require('../../utils/validation/schemas');
@@ -23,13 +24,15 @@ router.put('/gameadd/:id', validator(statistics, 'body'), async (req, res) => {
   res.status(OK).send(statistic.toResponse());
 });
 
-router.get('/gamedata/:date/gameType/:type', async (req, res) => {
-  const statistic = await statisticService.getStat(
-    req.userId,
-    req.params.date,
-    req.params.type
-  );
-  console.log('router', statistic);
+router.get('/gamedata/:date', async (req, res) => {
+  const statistic = await statisticService.getStat(req.userId, req.params.date);
+
+  res.status(OK).send(statistic);
+});
+
+router.get('/gametotal', async (req, res) => {
+  const statistic = await statisticService.getTotalStat(req.userId);
+
   res.status(OK).send(statistic);
 });
 

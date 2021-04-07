@@ -13,52 +13,16 @@ const StatisticSchema = new Schema(
     },
     optional: {
       gameStatistic: {
-        savanna: {
-          total: [
-            {
-              date: Date,
-              gameType: String,
-              know: Number,
-              dont_know: Number,
-              combo: Number
-            }
-          ],
-          forDate: []
-        },
-        sprint: {
-          total: [
-            {
-              date: Date,
-              gameType: String,
-              know: Number,
-              dont_know: Number,
-              combo: Number
-            }
-          ]
-        },
-
-        audiocall: {
-          total: [
-            {
-              date: Date,
-              gameType: String,
-              know: Number,
-              dont_know: Number,
-              combo: Number
-            }
-          ]
-        },
-        constructors: {
-          total: [
-            {
-              date: Date,
-              gameType: String,
-              know: Number,
-              dont_know: Number,
-              combo: Number
-            }
-          ]
-        }
+        total: [
+          {
+            date: Date,
+            gameType: String,
+            know: Number,
+            dont_know: Number,
+            combo: Number,
+            wordsId: [String]
+          }
+        ]
       }
     }
   },
